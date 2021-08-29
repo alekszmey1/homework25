@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"strings"
 )
 
 /*Написать программу для нахождения подстроки в кириллической подстроке. Программа должна запускаться с помощью команды:
@@ -21,19 +20,15 @@ func main()  {
 	fmt.Println(text,partText)
 
 	strrune2 :=[]rune(partText)
-	worlds := strings.Fields(text)
-	for _, world := range worlds {
-		strrune := []rune(world)
-		coincidence(strrune,strrune2)
-	}
+	strrune := []rune(text)
+	coincidence(strrune,strrune2)
 }
+
 func coincidence(a[]rune, b[]rune) {
-	if len(a) == len(b) {
-			for i := 0; i < len(a); i++ {
-			if a[i] != b[i]{
-				break
-			} else if i == len(a)-1{
-				fmt.Println("найдено совпадение")
+	for i := 0; i < len(b); i++ {
+		for j := 0; j <len(a); j++ {
+			if a[j] == b[i]{
+				fmt.Println("найдено совпадение. буква", string(a[i]))
 			}
 		}
 	}
