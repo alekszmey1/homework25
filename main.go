@@ -25,10 +25,25 @@ func main()  {
 }
 
 func coincidence(a[]rune, b[]rune) {
-	for i := 0; i < len(b); i++ {
-		for j := 0; j <len(a); j++ {
-			if a[j] == b[i]{
-				fmt.Println("найдено совпадение. буква", string(a[i]))
+	for i := 0; i < len(a); i++ {
+		if a[i] != b[0]{
+			fmt.Println("руна ", a[i], "не равна", b[0])// для отслеживания выполнения задачи
+			continue
+		} else {
+			for j := 0; j < len(b); j++ {
+				if a[i] == b[j] {
+					fmt.Println("найдено следующее совпадение,руна ", a[i], " равна", b[j])//для отслеживания выполнения задачи
+					i++
+					if j == len(b)-1 {
+						fmt.Println("найдено 100 % совпадение")
+						break
+					}
+					continue
+				} else {
+					i = i - j + 1
+					j = 0
+					return
+				}
 			}
 		}
 	}
